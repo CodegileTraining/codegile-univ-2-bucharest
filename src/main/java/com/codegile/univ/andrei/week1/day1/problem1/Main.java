@@ -1,33 +1,27 @@
 package com.codegile.univ.andrei.week1.day1.problem1;
 
-
 import java.io.*;
-
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException { // TODO: Remove this throws statement - unused
+    public static void main(String[] args) {
 
-
-        BufferedReader br = null;
-        InputStream is = null;
+        InputStream is;
+        is = ClassLoader.getSystemResourceAsStream("input.txt");
         int floats = 0;
         int integers = 0;
 
-        try {
-            is = ClassLoader.getSystemResourceAsStream("input.txt");
-            br = new BufferedReader(new InputStreamReader(is));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] lineStrings = sCurrentLine.split(" ");
-                // TODO: Replace with foreach loop
-                for (int i = 0; i < lineStrings.length; i++) {
-                    if (isInt(lineStrings[i])) {
+                for (String currentValue : lineStrings) {
+                    if (isInt(currentValue)) {
                         integers++;
                     }
-                    if (isFloat(lineStrings[i])) {
+                    if (isFloat(currentValue)) {
                         floats++;
                     }
                 }
@@ -38,19 +32,8 @@ public class Main {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            // TODO: Replace finally block with try-with-resources - see online
-            try {
-                if (br != null)
-                    br.close();
-                if (is != null)
-                    is.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
     }
-
 
     private static boolean isInt(String s) {
         try {
