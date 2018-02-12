@@ -14,7 +14,7 @@ public class Main {
             while ((contentOfFile = br.readLine()) != null) {
                 String[] contentOfFileAsStringArray = contentOfFile.split(" ");
                 for (String s : contentOfFileAsStringArray) {
-                    if ( isNumeric(s)==true ) {
+                    if (isNumeric(s) == true) {
                         try {
                             Integer.parseInt(s);
                             nrOfInt++;
@@ -42,14 +42,11 @@ public class Main {
             // 'unhandled exception java.io.exception'
         }
     }
-    public static boolean isNumeric(String str)
-    {
-        try
-        {
-            double d = Double.parseDouble(str);
-        }
-        catch(NumberFormatException nfe)
-        {
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
