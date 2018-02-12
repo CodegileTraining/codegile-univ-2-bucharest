@@ -1,4 +1,4 @@
-package com.codegile.univ.paul.week1.day1.problem1;
+package com.codegile.univ.dragos.week1.day1.problem1;
 
 public class Main {
 
