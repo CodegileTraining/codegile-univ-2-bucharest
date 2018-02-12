@@ -11,14 +11,15 @@ public class Main {
 
         InputStream is = ClassLoader.getSystemResourceAsStream("numbers.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String line = null;
+        String line = null; // TODO: Remove unused initializer
         try{
             while((line = br.readLine()) !=  null){
                 System.out.println(line);
                 String[] array = line.split(" ");
+                // TODO: Replace with foreach loop
                 for(int i=0; i<= array.length-1; i++){
                     if(checkIfStringIsInteger(array[i])) {
-                        intNumbersLength++;
+                        intNumbersLength++; // TODO: Count
                     }
                     if(checkIfStringIsReal(array[i])){
                         realNumbersLength++;
@@ -27,19 +28,21 @@ public class Main {
             }
         }catch (IOException e){
             e.printStackTrace();
+            // TODO: You have to close BufferedReaders, InputStreams etc. with the .close() method - very important
+            // TODO: Find out how to use try-with-resources to avoid writing a finally block
         }
-        System.out.println("Integer numbers: "+intNumbersLength);
+        System.out.println("Integer numbers: "+intNumbersLength); // TODO: Always use CTRL+ALT+L to format your code before pushing
         System.out.println("Real numbers: "+realNumbersLength);
 
 
     }
 
-    public static boolean checkIfStringIsInteger(String string){
+    public static boolean checkIfStringIsInteger(String string){ // TODO: Use clearer naming for these methods.
         try{
             Integer.parseInt(string);
         }catch(NumberFormatException e){
             return false;
-        }catch(NullPointerException e){
+        }catch(NullPointerException e){ // TODO: Investigate this warning
             return false;
         }
         return true;
