@@ -59,7 +59,7 @@ public class Main {
 
             return false;
 
-        } catch (NullPointerException e) {
+        } catch (NullPointerException e) { // TODO: Investigate warning
 
             return false;
         }
