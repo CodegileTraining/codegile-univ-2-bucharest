@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException { // TODO: Remove this throws statement - unused
 
 
         BufferedReader br = null;
@@ -22,6 +22,7 @@ public class Main {
 
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] lineStrings = sCurrentLine.split(" ");
+                // TODO: Replace with foreach loop
                 for (int i = 0; i < lineStrings.length; i++) {
                     if (isInt(lineStrings[i])) {
                         integers++;
@@ -38,6 +39,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // TODO: Replace finally block with try-with-resources - see online
             try {
                 if (br != null)
                     br.close();
