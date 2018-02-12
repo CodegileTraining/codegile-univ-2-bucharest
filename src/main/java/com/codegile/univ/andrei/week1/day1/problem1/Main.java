@@ -25,7 +25,8 @@ public class Main {
                 for (int i = 0; i < lineStrings.length; i++) {
                     if (isInt(lineStrings[i])) {
                         integers++;
-                    } else if (isFloat(lineStrings[i])) {
+                    }
+                    if (isFloat(lineStrings[i])) {
                         floats++;
                     }
                 }
