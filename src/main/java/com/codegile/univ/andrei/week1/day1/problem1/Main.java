@@ -6,12 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        InputStream is;
-        is = ClassLoader.getSystemResourceAsStream("input.txt");
         int floats = 0;
         int integers = 0;
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+        try (
+                InputStream is = ClassLoader.getSystemResourceAsStream("input.txt");
+                BufferedReader br = new BufferedReader(new InputStreamReader(is))
+        ) {
 
             String sCurrentLine;
 
