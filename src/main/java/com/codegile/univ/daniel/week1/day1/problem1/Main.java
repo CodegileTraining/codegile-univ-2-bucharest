@@ -45,6 +45,7 @@ public class Main {
                 BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 
             String contentOfFile;
+            String noSpaceContent;
             while ((contentOfFile = br.readLine()) != null) {
                 System.out.printf("\n");
                 System.out.printf("Content of file on line: " + contentOfFile);
@@ -52,6 +53,7 @@ public class Main {
                 contentOfFile = contentOfFile.replaceAll("\\,", "");
                 contentOfFile = contentOfFile.replaceAll("\\!", "");
                 contentOfFile = contentOfFile.replaceAll("\\?", "");
+                contentOfFile = contentOfFile.replaceAll(" +", " ");
                 contentOfFileAsStringArray = contentOfFile.split(" ");
                 contentList.addAll(Arrays.asList(contentOfFileAsStringArray));
             }
