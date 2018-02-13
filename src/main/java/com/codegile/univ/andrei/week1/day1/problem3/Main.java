@@ -11,7 +11,7 @@ public class Main {
         List<String> processedList = new ArrayList<>();
 
         List<String> fileContent = fs.readFromFile("input.txt");
-        for(String word: fileContent){
+        for (String word : fileContent) {
             word = word.replaceAll("\\.", "")
                     .replaceAll("\\,", "")
                     .replaceAll("\\?", "");
@@ -19,20 +19,20 @@ public class Main {
         }
         processedList.sort(String::compareTo);
 
-        for(String word: processedList){
-            if(startsWithVowel(word)){
+        for (String word : processedList) {
+            if (startsWithVowel(word)) {
                 System.out.println(word.length());
-            }else{
+            } else {
                 System.out.println(word);
             }
         }
     }
 
-    private static boolean startsWithVowel(String word){
+    private static boolean startsWithVowel(String word) {
         String vowels = "aeiou";
         if (vowels.indexOf(Character.toLowerCase(word.charAt(0))) != -1) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
