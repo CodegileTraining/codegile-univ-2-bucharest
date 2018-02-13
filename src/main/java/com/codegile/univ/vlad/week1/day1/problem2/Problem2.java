@@ -9,8 +9,7 @@ import java.util.regex.PatternSyntaxException;
 public class Problem2 {
     public static void main(String[] args) {
 
-        int numberIdealNames = 0;
-        int a = 1;
+        int idealNamesCount = 0;
         try (InputStream is = ClassLoader.getSystemResourceAsStream("words.txt");
              BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
@@ -33,7 +32,7 @@ public class Problem2 {
                             }
                         }
                         if (isIdealWord){
-                            numberIdealNames++;
+                            idealNamesCount++;
                             System.out.println(word);
                     }
 
@@ -44,7 +43,7 @@ public class Problem2 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(numberIdealNames);
+        System.out.println(idealNamesCount);
     }
 
 
