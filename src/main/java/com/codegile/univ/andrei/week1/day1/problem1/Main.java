@@ -1,6 +1,8 @@
 package com.codegile.univ.andrei.week1.day1.problem1;
 
-import java.io.*;
+import java.util.List;
+
+import com.codegile.univ.andrei.week1.day1.fileservice.FileService;
 
 public class Main {
 
@@ -8,32 +10,22 @@ public class Main {
 
         int floats = 0;
         int integers = 0;
+        FileService fs = new FileService();
+        List<String> fileContent;
 
-        try (
-                InputStream is = ClassLoader.getSystemResourceAsStream("input.txt");
-                BufferedReader br = new BufferedReader(new InputStreamReader(is))
-        ) {
-
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] lineStrings = sCurrentLine.split(" ");
-                for (String currentValue : lineStrings) {
-                    if (isInt(currentValue)) {
-                        integers++;
-                    }
-                    if (isFloat(currentValue)) {
-                        floats++;
-                    }
-                }
+        fileContent = fs.readFromFile("input.txt");
+        for (String currentValue : fileContent) {
+            if (isInt(currentValue)) {
+                integers++;
             }
-
-            System.out.println("Integers :" + integers);
-            System.out.println("Doubles :" + floats);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (isFloat(currentValue)) {
+                floats++;
+            }
         }
+
+        System.out.println("Integers :" + integers);
+        System.out.println("Doubles :" + floats);
+
     }
 
     private static boolean isInt(String s) {
