@@ -11,7 +11,7 @@ import java.util.List;
 public class FileReader {
     private List<String> contentList = new ArrayList<>();
 
-    public List<String> stringArrayOfFile(String fileName) {
+    public List<String> stringListOfFile(String fileName) {
         String[] contentOfFileAsStringArray;
 
         try (

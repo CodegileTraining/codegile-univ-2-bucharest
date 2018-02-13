@@ -7,11 +7,11 @@ import com.codegile.univ.daniel.week1.day1.utils.FileReader;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> contentOfFileAsStringArray;
+        List<String> contentOfFileAsStringList;
         int nrOfIdealWords = 0;
         FileReader fr = new FileReader();
-        contentOfFileAsStringArray = fr.stringArrayOfFile("file.txt");
-        for (String word : contentOfFileAsStringArray) {
+        contentOfFileAsStringList = fr.stringListOfFile("file.txt");
+        for (String word : contentOfFileAsStringList) {
             boolean isUpperCase = Character.isUpperCase(word.charAt(0));
             if (!isUpperCase) {
                 continue;
