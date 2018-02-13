@@ -9,35 +9,38 @@ public class Main {
     public static void main(String[] args) {
 
         FileService fs = new FileService();
-        List<String> fileContent;
+        int count = 0;
 
-        fileContent = fs.readFromFile("input.txt");
+        List<String> fileContent = fs.readFromFile("input.txt");
         for (String word : fileContent) {
+            word = word.replaceAll("\\.", "")
+                    .replaceAll("\\,", "")
+                    .replaceAll("\\?", "");
+
             if (isPerfect(word)) {
-                System.out.println(word + " is perfect.");
+                count++;
+
             }
         }
+
+        System.out.println("S-au gasit " + count + " cuvinte ideale");
     }
 
     private static boolean isPerfect(String word) {
 
         if (!Character.isUpperCase(word.charAt(0))) {
-          return false;
-        }
-        if(word.matches(".*\\d+.*")){
             return false;
         }
-        char ch;
-        for(int i=1;i < word.length();i++) {
-            ch = word.charAt(i);
-            if(Character.isAlphabetic(ch)){
-                if( Character.isDigit(ch)) {
+        if (word.matches(".*\\d+.*")) {
+            return false;
+        }
+        String aux = word.substring(1);
+        for (char ch : aux.toCharArray()) {
+            if (Character.isAlphabetic(ch)) {
+                if (Character.isUpperCase(ch)) {
                     return false;
                 }
-                else if (Character.isUpperCase(ch)) {
-                    return false;
-                }
-            }else{
+            } else {
                 return false;
             }
         }

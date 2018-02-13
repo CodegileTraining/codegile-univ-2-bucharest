@@ -11,9 +11,8 @@ public class Main {
         int floats = 0;
         int integers = 0;
         FileService fs = new FileService();
-        List<String> fileContent;
+        List<String> fileContent = fs.readFromFile("input.txt");
 
-        fileContent = fs.readFromFile("input.txt");
         for (String currentValue : fileContent) {
             if (isInt(currentValue)) {
                 integers++;
@@ -25,7 +24,6 @@ public class Main {
 
         System.out.println("Integers :" + integers);
         System.out.println("Doubles :" + floats);
-
     }
 
     private static boolean isInt(String s) {
