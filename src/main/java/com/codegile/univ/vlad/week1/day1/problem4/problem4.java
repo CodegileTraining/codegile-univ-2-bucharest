@@ -28,7 +28,6 @@ public class problem4 {
                     if (bCount % 2 == 0 && bCount >1) {
                         cuvintea2bCount++;
                         System.out.println(word);
-                        System.out.println(cuvintea2bCount);
                     }
                     bCount=0;
                 }
