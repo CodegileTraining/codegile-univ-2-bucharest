@@ -8,17 +8,18 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        int count = 0;
-        int nrOfWords = 0;
         List<String> contentOfFileAsStringList;
         FileReader fr = new FileReader();
+        int nrOfWords = 0;
 
         contentOfFileAsStringList = fr.stringListOfFile("web.html");
 
         for (int i = 0; i < contentOfFileAsStringList.size(); i++) {
+            int count = 0;
             String word = contentOfFileAsStringList.get(i).toLowerCase();
+
             for (int j = 0; j < word.length(); j++) {
-                if ("b".contains(word)) {
+                if (word.charAt(j) == 'b') {
                     count++;
                 }
             }
