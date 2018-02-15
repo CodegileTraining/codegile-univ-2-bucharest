@@ -10,22 +10,22 @@ public class problem4 {
         try (InputStream is = ClassLoader.getSystemResourceAsStream("htmlvalid.txt");
              BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
-            int cuvintea2bCount = 0;
+            int cuvintea2bCount = 0; // TODO: Find a better name for this variable
             int bCount = 0;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 line = line.replaceAll("<p>", "<span>")
-                        .replaceAll("</p", "</span>");
+                        .replaceAll("</p", "</span>"); // TODO: You have to replace the tags in the file (write to the file)
                 String[] array = line.split(" ");
                 for (String word : array) {
                     for (int i = 0; i <= word.length() - 1; i++) {
-                        if (word.charAt(i) == 'a' || word.charAt(i) == 'b') {
+                        if (word.charAt(i) == 'a' || word.charAt(i) == 'b') { // TODO: Try to find a solution using RegEx
                             if (word.charAt(i) == 'b') {
                                 bCount++;
                             }
                         } else break;
                     }
-                    if (bCount % 2 == 0 && bCount >1) {
+                    if (bCount % 2 == 0 && bCount >1) { // TODO: Why must there be at least 1 letter B?
                         cuvintea2bCount++;
                         System.out.println(word);
                     }
