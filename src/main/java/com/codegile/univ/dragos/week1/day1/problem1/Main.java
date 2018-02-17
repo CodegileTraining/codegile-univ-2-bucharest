@@ -55,13 +55,10 @@ public class Main {
             Float.parseFloat(s);
             return true;
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
 
             return false;
 
-        } catch (NullPointerException e) { // TODO: Investigate warning
-
-            return false;
         }
     }
 }
