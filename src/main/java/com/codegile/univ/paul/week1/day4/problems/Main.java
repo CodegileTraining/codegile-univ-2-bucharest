@@ -6,20 +6,20 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Driver> d = new ArrayList<Driver>();
+        ArrayList<Driver> d = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Driver driver = new Driver();
-            driver.name = "Drvier" + (i + 1);
-            driver.drivble_vehicles = new ArrayList<String>();
+            driver.setName("Drvier" + (i + 1));
+            driver.setDrivbleVehicles(new ArrayList<>());
             Random random = new Random();
-            if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("car");
+            if (random.nextBoolean()) {
+                driver.getDrivbleVehicles().add("car");
             }
-            if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("motorcycle");
+            if (random.nextBoolean()) {
+                driver.getDrivbleVehicles().add("motorcycle");
             }
-            if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("bus");
+            if (random.nextBoolean()) {
+                driver.getDrivbleVehicles().add("bus");
             }
             d.add(driver);
         }
@@ -29,60 +29,60 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             Car car = new Car();
 
-            car.number_of_wheels = 4;
-            ArrayList<String> string = new ArrayList<String>();
+            car.setNumberOfWheels(4);
+            ArrayList<String> string = new ArrayList<>();
             string.add("Ford");
             string.add("Mazda");
             string.add("BMW");
             string.add("Audi");
-            ArrayList<String> string2 = new ArrayList<String>();
+            ArrayList<String> string2 = new ArrayList<>();
             string2.add("Model 1");
             string2.add("Model 2");
             string2.add("Moddel 3");
             string2.add("Model 4");
             Random random = new Random();
-            car.make = string.get(random.nextInt(4));
-            car.model = string.get(random.nextInt(4));
+            car.setMake(string.get(random.nextInt(4)));
+            car.setModel(string.get(random.nextInt(4)));
             c.add(car);
         }
 
-        ArrayList<Motorcycle> m = new ArrayList<Motorcycle>();
+        ArrayList<Motorcycle> m = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Motorcycle motorcycle = new Motorcycle();
 
-            motorcycle.num_of_wheels = 2;
-            ArrayList<String> string = new ArrayList<String>();
+            motorcycle.setNumberOfWheels(2);
+            ArrayList<String> string = new ArrayList<>();
             string.add("Suzuki");
             string.add("Yamaha");
             string.add("Fufuki");
-            ArrayList<String> strin2 = new ArrayList<String>();
+            ArrayList<String> strin2 = new ArrayList<>();
             strin2.add("100");
             strin2.add("101");
             strin2.add("200");
             strin2.add("300");
             Random random = new Random();
-            motorcycle.make = string.get(random.nextInt(4));
-            motorcycle.model = strin2.get(random.nextInt(4));
-            motorcycle.cilinder_cpactiy = random.nextInt(2001) + 500;
+            motorcycle.setMake(string.get(random.nextInt(3)));
+            motorcycle.setModel(strin2.get(random.nextInt(4)));
+            motorcycle.setCilinderCpactiy(random.nextInt(2001) + 500);
         }
 
-        ArrayList<Bus> b = new ArrayList<Bus>();
+        ArrayList<Bus> b = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Bus bus = new Bus();
 
-            bus.num_of_wheels = 8;
-            ArrayList<String> strings = new ArrayList<String>();
+            bus.setNumberOfWheels(8);
+            ArrayList<String> strings = new ArrayList<>();
             strings.add("Mercedes");
             strings.add("Volkswagen");
-            ArrayList<String> strings1 = new ArrayList<String>();
+            ArrayList<String> strings1 = new ArrayList<>();
             strings1.add("C100");
             strings.add("D200");
             Random random = new Random();
-            bus.make = strings.get(random.nextInt(2));
-            bus.mode = strings1.get(random.nextInt(2));
-            bus.num_of_seats = random.nextInt(21) + 20;
+            bus.setMake(strings.get(random.nextInt(2)));
+            bus.setModel(strings1.get(random.nextInt(1)));
+            bus.setNumOfSeats(random.nextInt(21) + 20);
         }
 
         for (int i = 0; i < d.size(); i++) {
