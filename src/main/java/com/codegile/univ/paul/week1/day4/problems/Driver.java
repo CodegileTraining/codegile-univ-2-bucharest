@@ -4,23 +4,39 @@ import java.util.ArrayList;
 
 public class Driver {
 
-    public String name;
-    public ArrayList<String> drivble_vehicles;
+    private String name;
+    private ArrayList<String> drivbleVehicles;
 
     public void drive(Vehicle vehicle) {
-        if (vehicle instanceof Car && !drivble_vehicles.contains("car")) {
-            System.out.println(name + " cannot drive " + vehicle);
+        if (vehicle instanceof Car && !drivbleVehicles.contains("car")) {
+            System.out.println(name + " cannot drive " + ((Car) vehicle).getModel());
         }
-        if (vehicle instanceof Bus && !drivble_vehicles.contains("bus")) {
-            System.out.println(name + " cannot drive " + vehicle);
+        if (vehicle instanceof Bus && !drivbleVehicles.contains("bus")) {
+            System.out.println(name + " cannot drive " + ((Car) vehicle).getModel());
         }
-        System.out.println(name + " is driving " + vehicle);
+        System.out.println(name + " is driving " + ((Car) vehicle).getModel());
     }
 
     public void drive(Motorcycle motorcycle) {
-        if (!drivble_vehicles.contains("motrcycle")) {
-            System.out.println(name + " cannot drive " + motorcycle);
+        if (!drivbleVehicles.contains("motrcycle")) {
+            System.out.println(name + " cannot drive " + motorcycle.getModel());
         }
-        System.out.println(name + " is driving " + motorcycle);
+        System.out.println(name + " is driving " + motorcycle.getModel());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<String> getDrivbleVehicles() {
+        return drivbleVehicles;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDrivbleVehicles(ArrayList<String> drivbleVehicles) {
+        this.drivbleVehicles = drivbleVehicles;
     }
 }
