@@ -1,4 +1,4 @@
-Start out by reading the code in all the classes.
+    Start out by reading the code in all the classes.
 You have to figure out what it is trying to accomplish, while refactoring wherever it is necessary based on the
 coding conventions and structures you have learned this week:
  - Variable naming

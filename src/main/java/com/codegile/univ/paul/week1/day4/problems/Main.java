@@ -9,17 +9,17 @@ public class Main {
         ArrayList<Driver> d = new ArrayList<Driver>();
         for (int i = 0; i < 10; i++) {
             Driver driver = new Driver();
-            driver.name = "Drvier" + (i + 1);
-            driver.drivble_vehicles = new ArrayList<String>();
+            driver.name = "Driver" + (i + 1);
+            driver.drivebleVehicles = new ArrayList<String>();
             Random random = new Random();
             if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("car");
+                driver.drivebleVehicles.add("car");
             }
             if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("motorcycle");
+                driver.drivebleVehicles.add("motorcycle");
             }
             if (random.nextBoolean() == true) {
-                driver.drivble_vehicles.add("bus");
+                driver.drivebleVehicles.add("bus");
             }
             d.add(driver);
         }
@@ -29,7 +29,7 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             Car car = new Car();
 
-            car.number_of_wheels = 4;
+            car.numberOfWheels = 4;
             ArrayList<String> string = new ArrayList<String>();
             string.add("Ford");
             string.add("Mazda");
@@ -51,20 +51,20 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             Motorcycle motorcycle = new Motorcycle();
 
-            motorcycle.num_of_wheels = 2;
+            motorcycle.numberOfWheels = 2;
             ArrayList<String> string = new ArrayList<String>();
             string.add("Suzuki");
             string.add("Yamaha");
             string.add("Fufuki");
-            ArrayList<String> strin2 = new ArrayList<String>();
-            strin2.add("100");
-            strin2.add("101");
-            strin2.add("200");
-            strin2.add("300");
+            ArrayList<String> string2 = new ArrayList<String>();
+            string2.add("100");
+            string2.add("101");
+            string2.add("200");
+            string2.add("300");
             Random random = new Random();
-            motorcycle.make = string.get(random.nextInt(4));
-            motorcycle.model = strin2.get(random.nextInt(4));
-            motorcycle.cilinder_cpactiy = random.nextInt(2001) + 500;
+            motorcycle.make = string.get(random.nextInt(3));
+            motorcycle.model = string2.get(random.nextInt(4));
+            motorcycle.cilinderCapactiy = random.nextInt(2001) + 500;
         }
 
         ArrayList<Bus> b = new ArrayList<Bus>();
@@ -72,17 +72,17 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             Bus bus = new Bus();
 
-            bus.num_of_wheels = 8;
+            bus.numberOfWheels = 8;
             ArrayList<String> strings = new ArrayList<String>();
             strings.add("Mercedes");
             strings.add("Volkswagen");
             ArrayList<String> strings1 = new ArrayList<String>();
             strings1.add("C100");
-            strings.add("D200");
+            strings1.add("D200");
             Random random = new Random();
             bus.make = strings.get(random.nextInt(2));
-            bus.mode = strings1.get(random.nextInt(2));
-            bus.num_of_seats = random.nextInt(21) + 20;
+            bus.model = strings1.get(random.nextInt(2));
+            bus.numOfSeats = random.nextInt(21) + 20;
         }
 
         for (int i = 0; i < d.size(); i++) {
@@ -90,7 +90,7 @@ public class Main {
             int j = random.nextInt(c.size() + b.size() + m.size());
             if (j >= c.size()) {
                 if (j >= c.size() + m.size()) {
-                   d.get(i).drive(b.get(j - c.size() - m.size()));
+                    d.get(i).drive(b.get(j - c.size() - m.size()));
                 } else {
                     d.get(i).drive(m.get(j - c.size()));
                 }
