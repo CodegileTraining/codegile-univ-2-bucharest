@@ -6,97 +6,85 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Driver> d = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Driver driver = new Driver();
-            driver.setName("Drvier" + (i + 1));
-            driver.setDrivbleVehicles(new ArrayList<>());
-            Random random = new Random();
-            if (random.nextBoolean()) {
-                driver.getDrivbleVehicles().add("car");
-            }
-            if (random.nextBoolean()) {
-                driver.getDrivbleVehicles().add("motorcycle");
-            }
-            if (random.nextBoolean()) {
-                driver.getDrivbleVehicles().add("bus");
-            }
-            d.add(driver);
-        }
-
-        ArrayList<Car> c = new ArrayList<Car>();
+        Random random = new Random();
+        ArrayList<Driver> driverList=new Driver().createDrivers(10,random);
+        ArrayList<Car> carList = new ArrayList<Car>();
 
         for (int i = 0; i < 5; i++) {
             Car car = new Car();
 
             car.setNumberOfWheels(4);
-            ArrayList<String> string = new ArrayList<>();
-            string.add("Ford");
-            string.add("Mazda");
-            string.add("BMW");
-            string.add("Audi");
-            ArrayList<String> string2 = new ArrayList<>();
-            string2.add("Model 1");
-            string2.add("Model 2");
-            string2.add("Moddel 3");
-            string2.add("Model 4");
-            Random random = new Random();
-            car.setMake(string.get(random.nextInt(4)));
-            car.setModel(string.get(random.nextInt(4)));
-            c.add(car);
+            ArrayList<String> carBrands = new ArrayList<>();
+            carBrands.add("Ford");
+            carBrands.add("Mazda");
+            carBrands.add("BMW");
+            carBrands.add("Audi");
+            ArrayList<String> carModels = new ArrayList<>();
+            carModels.add("Model 1");
+            carModels.add("Model 2");
+            carModels.add("Moddel 3");
+            carModels.add("Model 4");
+            car.setBrand(carBrands.get(random.nextInt(4)));
+            car.setModel(carModels.get(random.nextInt(4)));
+            carList.add(car);
         }
 
-        ArrayList<Motorcycle> m = new ArrayList<>();
+        ArrayList<Motorcycle> motorcycleList = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Motorcycle motorcycle = new Motorcycle();
 
             motorcycle.setNumberOfWheels(2);
-            ArrayList<String> string = new ArrayList<>();
-            string.add("Suzuki");
-            string.add("Yamaha");
-            string.add("Fufuki");
-            ArrayList<String> strin2 = new ArrayList<>();
-            strin2.add("100");
-            strin2.add("101");
-            strin2.add("200");
-            strin2.add("300");
-            Random random = new Random();
-            motorcycle.setMake(string.get(random.nextInt(3)));
-            motorcycle.setModel(strin2.get(random.nextInt(4)));
+            ArrayList<String> motorcycleBrands = new ArrayList<>();
+            motorcycleBrands.add("Suzuki");
+            motorcycleBrands.add("Yamaha");
+            motorcycleBrands.add("Fufuki");
+            ArrayList<String> motorcycleModels = new ArrayList<>();
+            motorcycleModels.add("100");
+            motorcycleModels.add("101");
+            motorcycleModels.add("200");
+            motorcycleModels.add("300");
+            motorcycle.setBrand(motorcycleBrands.get(random.nextInt(3)));
+            motorcycle.setModel(motorcycleModels.get(random.nextInt(4)));
             motorcycle.setCilinderCpactiy(random.nextInt(2001) + 500);
+            motorcycleList.add(motorcycle);
         }
 
-        ArrayList<Bus> b = new ArrayList<>();
+        ArrayList<Bus> busList = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Bus bus = new Bus();
 
             bus.setNumberOfWheels(8);
-            ArrayList<String> strings = new ArrayList<>();
-            strings.add("Mercedes");
-            strings.add("Volkswagen");
-            ArrayList<String> strings1 = new ArrayList<>();
-            strings1.add("C100");
-            strings.add("D200");
-            Random random = new Random();
-            bus.setMake(strings.get(random.nextInt(2)));
-            bus.setModel(strings1.get(random.nextInt(1)));
+            ArrayList<String> busBrands = new ArrayList<>();
+            busBrands.add("Mercedes");
+            busBrands.add("Volkswagen");
+            ArrayList<String> busModels = new ArrayList<>();
+            busModels.add("C100");
+            busModels.add("D200");
+            bus.setBrand(busBrands.get(random.nextInt(2)));
+            bus.setModel(busModels.get(random.nextInt(1)));
             bus.setNumOfSeats(random.nextInt(21) + 20);
+            busList.add(bus);
         }
 
-        for (int i = 0; i < d.size(); i++) {
-            Random random = new Random();
-            int j = random.nextInt(c.size() + b.size() + m.size());
-            if (j >= c.size()) {
-                if (j >= c.size() + m.size()) {
-                   d.get(i).drive(b.get(j - c.size() - m.size()));
+        for (int i = 0; i < driverList.size(); i++) {
+
+            int j = random.nextInt(carList.size() + busList.size() + motorcycleList.size());
+            if (j >= carList.size()) {
+                if (j >= carList.size() + motorcycleList.size()) {
+                   driverList.get(i).drive(busList.get(j - carList.size() - motorcycleList.size()));
                 } else {
-                    d.get(i).drive(m.get(j - c.size()));
+                    driverList.get(i).drive(motorcycleList.get(j - carList.size()));
                 }
             } else {
-                d.get(i).drive(c.get(j));
+                driverList.get(i).drive(carList.get(j));
             }
         }
     }
+
+    //To do
+//    public static ArrayList<Vehicle> createVehicles(int numberOfWheels,ArrayList<String> brands, ArrayList<String> models ){
+//
+//    }
 }
