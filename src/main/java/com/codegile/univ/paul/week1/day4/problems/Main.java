@@ -6,7 +6,8 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        Random random = new Random();
+        Random random = new Random(); // TODO: Find a better place for the Random object
+        // TODO: Why is a Driver object responsible of creating other Driver objects?
         ArrayList<Driver> driverList=new Driver().createDrivers(10,random);
         ArrayList<Car> carList = new ArrayList<Car>();
 
