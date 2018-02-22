@@ -1,6 +1,14 @@
 package com.codegile.univ.paul.week1.day4.problems;
 
-public class Motorcycle extends Vehicle {
+public class Motorcycle extends Automobile {
 
-    public int cilinderCapactiy;
+    private int cilinderCapactiy;
+
+    public int getCilinderCapactiy() {
+        return cilinderCapactiy;
+    }
+
+    public void setCilinderCapactiy(int cilinderCapactiy) {
+        this.cilinderCapactiy = cilinderCapactiy;
+    }
 }
