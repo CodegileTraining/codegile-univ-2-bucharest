@@ -1,91 +1,35 @@
 package com.codegile.univ.paul.week1.day4.problems;
 
+import com.codegile.univ.paul.week1.day4.problems.entities.*;
+import com.codegile.univ.paul.week1.day4.problems.enums.*;
+import com.codegile.univ.paul.week1.day4.problems.generator.BusGenerator;
+import com.codegile.univ.paul.week1.day4.problems.generator.CarGenerator;
+import com.codegile.univ.paul.week1.day4.problems.generator.DriversGenerator;
+import com.codegile.univ.paul.week1.day4.problems.generator.MotorcycleGenerator;
+import com.codegile.univ.paul.week1.day4.problems.utils.RandomProvider;
+
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Random random = new Random(); // TODO: Find a better place for the Random object
-        // TODO: Why is a Driver object responsible of creating other Driver objects?
-        ArrayList<Driver> driverList=new Driver().createDrivers(10,random);
-        ArrayList<Car> carList = new ArrayList<Car>();
+        List<Driver> driverList = new DriversGenerator().createDrivers(10);
+        List<Car> carList = new CarGenerator().createCars(5);
+        List<Motorcycle> motorcycleList = new MotorcycleGenerator().createMotorcycle(5);
+        List<Bus> busList = new BusGenerator().createBus(5);
 
-        for (int i = 0; i < 5; i++) {
-            Car car = new Car();
 
-            car.setNumberOfWheels(4);
-            ArrayList<String> carBrands = new ArrayList<>();
-            carBrands.add("Ford");
-            carBrands.add("Mazda");
-            carBrands.add("BMW");
-            carBrands.add("Audi");
-            ArrayList<String> carModels = new ArrayList<>();
-            carModels.add("Model 1");
-            carModels.add("Model 2");
-            carModels.add("Moddel 3");
-            carModels.add("Model 4");
-            car.setBrand(carBrands.get(random.nextInt(4)));
-            car.setModel(carModels.get(random.nextInt(4)));
-            carList.add(car);
+        List<Automobile> autoList = new ArrayList<>();
+        autoList.addAll(carList);
+        autoList.addAll(busList);
+        autoList.addAll(motorcycleList);
+
+        for (Driver driver : driverList)
+        {
+            driver.drive(autoList.get(RandomProvider.getNextInt(autoList.size())));
         }
 
-        ArrayList<Motorcycle> motorcycleList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            Motorcycle motorcycle = new Motorcycle();
-
-            motorcycle.setNumberOfWheels(2);
-            ArrayList<String> motorcycleBrands = new ArrayList<>();
-            motorcycleBrands.add("Suzuki");
-            motorcycleBrands.add("Yamaha");
-            motorcycleBrands.add("Fufuki");
-            ArrayList<String> motorcycleModels = new ArrayList<>();
-            motorcycleModels.add("100");
-            motorcycleModels.add("101");
-            motorcycleModels.add("200");
-            motorcycleModels.add("300");
-            motorcycle.setBrand(motorcycleBrands.get(random.nextInt(3)));
-            motorcycle.setModel(motorcycleModels.get(random.nextInt(4)));
-            motorcycle.setCilinderCpactiy(random.nextInt(2001) + 500);
-            motorcycleList.add(motorcycle);
-        }
-
-        ArrayList<Bus> busList = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-            Bus bus = new Bus();
-
-            bus.setNumberOfWheels(8);
-            ArrayList<String> busBrands = new ArrayList<>();
-            busBrands.add("Mercedes");
-            busBrands.add("Volkswagen");
-            ArrayList<String> busModels = new ArrayList<>();
-            busModels.add("C100");
-            busModels.add("D200");
-            bus.setBrand(busBrands.get(random.nextInt(2)));
-            bus.setModel(busModels.get(random.nextInt(1)));
-            bus.setNumOfSeats(random.nextInt(21) + 20);
-            busList.add(bus);
-        }
-
-        for (int i = 0; i < driverList.size(); i++) {
-
-            int j = random.nextInt(carList.size() + busList.size() + motorcycleList.size());
-            if (j >= carList.size()) {
-                if (j >= carList.size() + motorcycleList.size()) {
-                   driverList.get(i).drive(busList.get(j - carList.size() - motorcycleList.size()));
-                } else {
-                    driverList.get(i).drive(motorcycleList.get(j - carList.size()));
-                }
-            } else {
-                driverList.get(i).drive(carList.get(j));
-            }
-        }
     }
-
-    //To do
-//    public static ArrayList<Vehicle> createVehicles(int numberOfWheels,ArrayList<String> brands, ArrayList<String> models ){
-//
-//    }
 }

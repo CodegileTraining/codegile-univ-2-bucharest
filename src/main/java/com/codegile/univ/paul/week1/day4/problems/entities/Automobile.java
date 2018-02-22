@@ -1,19 +1,19 @@
-package com.codegile.univ.paul.week1.day4.problems;
+package com.codegile.univ.paul.week1.day4.problems.entities;
 
-// TODO: Do we ever want to instantiate this class?
-public class Automobile extends Vehicle{
+
+public abstract class Automobile extends Vehicle {
 
     private int numberOfWheels;
     private int cilinderCapactiy;
 
     // TODO: Fix typos
 
-    public int getCilinderCpactiy() {
+    public int getCilinderCapactiy() {
         return cilinderCapactiy;
     }
 
-    public void setCilinderCpactiy(int cilinderCpactiy) {
-        this.cilinderCapactiy = cilinderCpactiy;
+    public void setCilinderCapactiy(int cilinderCapactiy) {
+        this.cilinderCapactiy = cilinderCapactiy;
     }
 
     public int getNumberOfWheels() {
