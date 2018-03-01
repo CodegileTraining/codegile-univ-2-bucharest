@@ -5,26 +5,33 @@ import java.util.*;
 
 
 public class CustomList<T> implements List<T> {
-    private T element;
+    private static final int INITIAL_CAPACITY = 10;
+    private Object[] elements;
+    private int size = 0;
+
+    public CustomList() {
+        elements = new Object[INITIAL_CAPACITY];
+    }
 
     @Override
     public int size() {
-        return size();
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) >= 0;
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return listIterator();
     }
 
     @Override
@@ -48,12 +55,6 @@ public class CustomList<T> implements List<T> {
             a[i] = null;
         }
         return a;
-    }
-
-
-    @Override
-    public boolean add(T t) {
-        return false;
     }
 
     @Override
@@ -88,30 +89,62 @@ public class CustomList<T> implements List<T> {
 
     @Override
     public void clear() {
-        element = null;
-
+        elements = null;
+        size = 0;
     }
 
     @Override
     public T get(int index) {
-        return element;
+        return null;
     }
 
     @Override
     public T set(int index, T element) {
-        return element;
+        return null;
+    }
+
+    @Override
+    public boolean add(T t) {
+        add(size, t);
+        return true;
     }
 
     @Override
     public void add(int index, T element) {
-        this.element = element;
-        index++;
+        size++;
+        checkRange(index);
+        Object[] newList = new Object[size];
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                newList[i] = element;
+                continue;
+            }
+            newList[i] = elements[i];
+        }
+        elements = newList;
+    }
 
+    private void checkRange(int index) {
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException();
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        checkRange(index);
+        T removedElement = (T) elements[index];
+        Object[] newIist = new Object[--size];
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                newIist[i] = elements[i + 1];
+            } else if (i > index) {
+                newIist[i] = elements[i + 1];
+            } else {
+                newIist[i] = elements[i];
+            }
+        }
+        elements = newIist;
+        return removedElement;
     }
 
     @Override
@@ -131,12 +164,23 @@ public class CustomList<T> implements List<T> {
 
     @Override
     public ListIterator<T> listIterator(int index) {
-        return null;
+        return listIterator(0);
     }
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "CustomList{" +
+                "elements=" + Arrays.toString(elements) +
+                ", size=" + size +
+                '}';
+    }
 }
+
+
+
 

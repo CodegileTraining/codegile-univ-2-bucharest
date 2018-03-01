@@ -10,7 +10,10 @@ public class Main {
         list.add(" 23");
         list.add("326");
         System.out.println(list);
-
+        list.remove(0);
+        System.out.println(list);
+        list.clear();
+        System.out.println(list);
 
     }
 }
