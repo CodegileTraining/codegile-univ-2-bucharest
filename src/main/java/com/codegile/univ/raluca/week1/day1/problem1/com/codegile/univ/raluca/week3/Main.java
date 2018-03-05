@@ -14,8 +14,8 @@ public class Main {
         System.out.println(list);
         System.out.println(list.get(1));
         list.set(1, "253");
-        System.out.println(list.subList(1, 3));
         System.out.println(list);
+        System.out.println(list.subList(1, 3));
         list.remove(0);
         System.out.println(list);
         list.clear();

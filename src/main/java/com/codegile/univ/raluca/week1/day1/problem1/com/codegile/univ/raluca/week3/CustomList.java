@@ -2,6 +2,7 @@ package com.codegile.univ.raluca.week1.day1.problem1.com.codegile.univ.raluca.we
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class CustomList<T> implements List<T> {
@@ -171,11 +172,14 @@ public class CustomList<T> implements List<T> {
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        Object[] newList = new Object[toIndex - fromIndex + 1];
+        Object[] newList = new Object[toIndex - fromIndex];
+        int n = 0;
         for (int i = fromIndex; i < toIndex; i++) {
-            newList[i] = elements[i];
+            newList[n++] = elements[i];
         }
-        return Collections.singletonList((T) newList);
+
+        List<Object> list = Arrays.stream(newList).collect(Collectors.toList());
+        return (List<T>) list;
     }
 
     @Override
