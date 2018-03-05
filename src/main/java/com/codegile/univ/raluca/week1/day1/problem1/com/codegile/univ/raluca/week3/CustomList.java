@@ -95,12 +95,14 @@ public class CustomList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        return (T) elements[index];
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T set(int index, T element) {
-        return null;
+        elements[index] = element;
+        return (T) elements[index];
     }
 
     @Override
@@ -169,7 +171,12 @@ public class CustomList<T> implements List<T> {
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        Object[] newList = new Object[toIndex - fromIndex + 1];
+        for (int i = fromIndex; i < toIndex; i++) {
+            newList[i] = elements[i];
+        }
+
+        return Collections.singletonList((T) newList);
     }
 
     @Override
