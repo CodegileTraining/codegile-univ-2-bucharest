@@ -175,14 +175,13 @@ public class CustomList<T> implements List<T> {
         for (int i = fromIndex; i < toIndex; i++) {
             newList[i] = elements[i];
         }
-
         return Collections.singletonList((T) newList);
     }
 
     @Override
     public String toString() {
         return "CustomList{" +
-                "elements=" + Arrays.toString(elements) +
+                "elements= " + Arrays.toString(elements) +
                 ", size=" + size +
                 '}';
     }
