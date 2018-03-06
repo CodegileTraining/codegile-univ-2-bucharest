@@ -1,9 +1,5 @@
 package com.codegile.univ.paul.week1.day4.problems;
 
-public class Car extends Vehicle {
+public class Car extends Automobile {
 
-    public int number_of_wheels;
-    public String make;
-    public String model;
-
-}
+    }

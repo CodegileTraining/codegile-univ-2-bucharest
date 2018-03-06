@@ -9,7 +9,9 @@ public class problem4 {
     public static void main(String[] args) {
         try (InputStream is = ClassLoader.getSystemResourceAsStream("htmlvalid.txt");
              BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+
             String line;
+
             int wordCount = 0; // TODO: Find a better name for this variable
             List<String> lines = new ArrayList<>();
             while ((line = br.readLine()) != null) {
@@ -41,6 +43,9 @@ public class problem4 {
             for (String line : lines) {
                 writer.append(line)
                         .append("\n");
+
+                //writer.write(line);
+                    writer.write("\n");
 
             }
 
