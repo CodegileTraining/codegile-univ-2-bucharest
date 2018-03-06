@@ -2,7 +2,6 @@ package com.codegile.univ.raluca.week1.day1.problem1.com.codegile.univ.raluca.we
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 public class CustomList<T> implements List<T> {
@@ -178,7 +177,7 @@ public class CustomList<T> implements List<T> {
             newList[n++] = elements[i];
         }
 
-        List<Object> list = Arrays.stream(newList).collect(Collectors.toList());
+        List<Object> list = Arrays.asList(newList);
         return (List<T>) list;
     }
 
