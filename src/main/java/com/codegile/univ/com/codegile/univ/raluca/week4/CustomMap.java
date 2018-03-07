@@ -1,20 +1,47 @@
 package com.codegile.univ.com.codegile.univ.raluca.week4;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 public class CustomMap<K, V> implements Map<K, V> {
+    private int size;
+    Node<K, V>[] elements;
 
-    private Object key;
-    private Object value;
-    private Objects[] elements;
-    private int size = 0;
-
-    public CustomMap() {
-        elements = new Objects[]
+    public CustomMap(int size) {
+        this.size = size;
+        elements = new Node[size];
     }
+
+    static class Node<K, V> implements Map.Entry<K, V> {
+        private K key;
+        private V value;
+
+
+        public Node(K key, V value, Node<K, V> next) {
+            this.key = key;
+            this.value = value;
+        }
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            V oldValue = this.value;
+            this.value = value;
+            return oldValue;
+        }
+    }
+
 
     @Override
     public int size() {
@@ -28,17 +55,31 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean containsKey(Object key) {
+        for (int i = 0; i < size; i++) {
+            if (key.equals(elements[i].getKey())) return true;
+        }
+
         return false;
     }
 
     @Override
     public boolean containsValue(Object value) {
+        for (int i = 0; i < size; i++) {
+            if (value == elements[i].getValue()) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public Object get(Object key) {
-        return null;
+    public V get(Object key) {
+        V val = (V) new ArrayList<V>();
+        for (int i = 0; i < size; i++) {
+            if (key == elements[i].getKey())
+                val = elements[i].getValue();
+        }
+        return val;
     }
 
     @Override
