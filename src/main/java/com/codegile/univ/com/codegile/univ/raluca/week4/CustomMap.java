@@ -9,7 +9,8 @@ public class CustomMap<K, V> implements Map<K, V> {
     private int size;
     Node<K, V>[] elements;
 
-    public CustomMap(int size) {
+
+    public CustomMap() {
         this.size = size;
         elements = new Node[size];
     }
@@ -19,7 +20,7 @@ public class CustomMap<K, V> implements Map<K, V> {
         private V value;
 
 
-        public Node(K key, V value, Node<K, V> next) {
+        public Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
@@ -39,6 +40,11 @@ public class CustomMap<K, V> implements Map<K, V> {
             V oldValue = this.value;
             this.value = value;
             return oldValue;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
+
         }
     }
 
@@ -65,7 +71,7 @@ public class CustomMap<K, V> implements Map<K, V> {
     @Override
     public boolean containsValue(Object value) {
         for (int i = 0; i < size; i++) {
-            if (value == elements[i].getValue()) {
+            if (value.equals(elements[i].getValue())) {
                 return true;
             }
         }
@@ -76,7 +82,7 @@ public class CustomMap<K, V> implements Map<K, V> {
     public V get(Object key) {
         V val = (V) new ArrayList<V>();
         for (int i = 0; i < size; i++) {
-            if (key == elements[i].getKey())
+            if (key.equals(elements[i].getKey()))
                 val = elements[i].getValue();
         }
         return val;
@@ -84,11 +90,35 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public Object put(Object key, Object value) {
+        Node[] newElements = new Node[size];
+        boolean trueKey = false;
+        for (int i = 0; i < size; i++) {
+            if (key.equals(elements[i].getKey())) {
+                newElements[i].setValue(value);
+                trueKey = true;
+                continue;
+            }
+            newElements[i] = elements[i];
+        }
+        if (trueKey == false) {
+            size++;
+            newElements[size].setKey((K) key);
+            newElements[size].setValue((V) value);
+        }
+        elements = newElements;
         return null;
     }
 
     @Override
-    public Object remove(Object key) {
+    public V remove(Object key) {
+        Node[] newElements = new Node[size];
+        for (int i = 0; i < size; i++) {
+            if (key.equals(elements[i].getKey())) {
+                newElements[i] = elements[i + 1];
+            } else newElements[i] = elements[i];
+
+        }
+        elements = newElements;
         return null;
     }
 
@@ -99,6 +129,8 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public void clear() {
+        elements = null;
+        size = 0;
 
     }
 
