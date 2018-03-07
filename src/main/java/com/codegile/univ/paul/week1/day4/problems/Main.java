@@ -9,9 +9,6 @@ public class Main {
         drivers = DriversGenerator.getDrivers(10);
         List<Car> cars = new ArrayList<>();
         cars = CarsGenerator.getCars(5);
-        for(int i=0; i<5; i++){
-            System.out.println();
-        }
         List<Bus> busses = new ArrayList<>();
         busses = BussesGenerator.getBusses(5);
         List<Motorcycle> motorcycles = new ArrayList<>();
