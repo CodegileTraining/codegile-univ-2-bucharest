@@ -6,15 +6,14 @@ import java.util.Random;
 
 public class DriversGenerator {
 
-    public static List<Driver> getDrivers(int count) {
+    public static List<Driver> getDrivers(int numberOfDrivers) {
         List<Driver> drivers = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < numberOfDrivers; i++) {
             Driver driver = new Driver();
             driver.setName("Driver " + (i+1));
-            Random random = new Random();
             List<DrivableVehicles> drivableVehicles = new ArrayList<>();
             for (DrivableVehicles vehicleType : DrivableVehicles.values()) {
-                if (random.nextBoolean()) {
+                if (RandomGenerator.getNextBoolean()) {
                     drivableVehicles.add(vehicleType);
                     System.out.println(driver.getName() + " is driving " + vehicleType);
                 } else {

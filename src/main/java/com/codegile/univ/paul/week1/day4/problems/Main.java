@@ -17,9 +17,8 @@ public class Main {
         vehicles.addAll(cars);
         vehicles.addAll(busses);
         vehicles.addAll(motorcycles);
-        for (int i = 0; i < drivers.size(); i++) {
-            int j = RandomGenerator.getInt();
-            drivers.get(i);
-        }
+     //   for (Driver driver : drivers){
+      //      driver.
+       // }
     }
 }

@@ -10,7 +10,7 @@ public class BussesGenerator {
             Bus bus = new Bus();
             bus.setNumberOfWheels(8);
             BusMake busMake = BusMake.getRandom();
-            CarModel carModel = CarModel.getRandom();
+            BusModel busModel = BusModel.getRandom();
             busses.add(bus);
         }
         return busses;

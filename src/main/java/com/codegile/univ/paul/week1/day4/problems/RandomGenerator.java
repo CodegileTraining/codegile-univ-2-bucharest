@@ -6,7 +6,11 @@ public class RandomGenerator {
 
     private static Random randomGenerator = new Random(System.currentTimeMillis());
 
-    public static int getInt() {
-        return randomGenerator.nextInt();
+    public static int getInt(int number) {
+        return randomGenerator.nextInt(number);
+    }
+
+    public static boolean getNextBoolean() {
+        return randomGenerator.nextBoolean();
     }
 }
