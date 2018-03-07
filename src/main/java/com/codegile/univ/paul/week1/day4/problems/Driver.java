@@ -22,4 +22,8 @@ public class Driver {
     public void setDrivableVehicles(List<DrivableVehicles> drivableVehicles) {
         this.drivableVehicles = drivableVehicles;
     }
+
+ //   public void drive(Vehicle vehicle){
+ //       if (drivableVehicles.contains())
+ //   }
 }

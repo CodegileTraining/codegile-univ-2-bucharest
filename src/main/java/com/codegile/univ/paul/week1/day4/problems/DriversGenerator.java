@@ -17,6 +17,7 @@ public class DriversGenerator {
                     drivableVehicles.add(vehicleType);
                     System.out.println(driver.getName() + " is driving " + vehicleType);
                 } else {
+                    drivableVehicles.add(vehicleType);
                     System.out.println(driver.getName() + " cannot drive " + vehicleType);
                 }
             }
