@@ -6,13 +6,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Driver> drivers = new ArrayList<>();
-        drivers = DriversGenerator.getDrivers();
+        drivers = DriversGenerator.getDrivers(10);
         List<Car> cars = new ArrayList<>();
-        cars = CarsGenerator.getCars();
+        cars = CarsGenerator.getCars(5);
         List<Bus> busses = new ArrayList<>();
-        busses = BussesGenerator.getBusses();
+        busses = BussesGenerator.getBusses(5);
         List<Motorcycle> motorcycles = new ArrayList<>();
-        motorcycles = MotorcyclesGenerator.getMotorcycles();
+        motorcycles = MotorcyclesGenerator.getMotorcycles(5);
         List<Automobile> vehicles = new ArrayList<>();
         vehicles.addAll(cars);
         vehicles.addAll(busses);
@@ -20,9 +20,6 @@ public class Main {
         for (int i = 0; i < drivers.size(); i++) {
             int j = RandomGenerator.getInt();
             drivers.get(i);
-
         }
-        System.out.println(drivers);
-
     }
 }

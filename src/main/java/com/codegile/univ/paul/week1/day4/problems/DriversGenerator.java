@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class DriversGenerator {
 
-    public static List<Driver> getDrivers() {
+    public static List<Driver> getDrivers(int count) {
         List<Driver> drivers = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < count; i++) {
             Driver driver = new Driver();
             driver.setName("Driver " + (i+1));
             Random random = new Random();
