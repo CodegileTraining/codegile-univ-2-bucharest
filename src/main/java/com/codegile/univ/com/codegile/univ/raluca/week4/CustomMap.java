@@ -1,18 +1,22 @@
 package com.codegile.univ.com.codegile.univ.raluca.week4;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 public class CustomMap<K, V> implements Map<K, V> {
     private int size;
-    Node<K, V>[] elements;
+    private Node<K, V>[] elements;
 
 
-    public CustomMap() {
-        this.size = size;
+    public CustomMap(int size) {
+        this.size = 0;
         elements = new Node[size];
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     static class Node<K, V> implements Map.Entry<K, V> {
@@ -44,7 +48,14 @@ public class CustomMap<K, V> implements Map<K, V> {
 
         public void setKey(K key) {
             this.key = key;
+        }
 
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "key=" + key +
+                    ", value=" + value +
+                    '}';
         }
     }
 
@@ -62,7 +73,9 @@ public class CustomMap<K, V> implements Map<K, V> {
     @Override
     public boolean containsKey(Object key) {
         for (int i = 0; i < size; i++) {
-            if (key.equals(elements[i].getKey())) return true;
+            if (elements[i] != null && key.equals(elements[i].getKey())) {
+                return true;
+            }
         }
 
         return false;
@@ -80,41 +93,76 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public V get(Object key) {
-        V val = (V) new ArrayList<V>();
         for (int i = 0; i < size; i++) {
-            if (key.equals(elements[i].getKey()))
-                val = elements[i].getValue();
+            if (elements[i] != null && key.equals(elements[i].getKey())) {
+                return elements[i].getValue();
+            }
         }
-        return val;
+        return null;
     }
 
     @Override
-    public Object put(Object key, Object value) {
-        Node[] newElements = new Node[size];
-        boolean trueKey = false;
-        for (int i = 0; i < size; i++) {
-            if (key.equals(elements[i].getKey())) {
-                newElements[i].setValue(value);
-                trueKey = true;
-                continue;
+    public V put(K key, V value) {
+        // Paul
+        V oldValue = get(key);
+        Node<K, V>[] newElements;
+
+        if (containsKey(key)) {
+            for (Node<K, V> node : elements) {
+                if (node.getKey().equals(key)) {
+                    node.setValue(value);
+                }
             }
-            newElements[i] = elements[i];
+        } else {
+            int newSize = size + 1;
+            newElements = copyOfElements(newSize);
+            newElements[newSize - 1] = new Node<>(key, value);
+            this.elements = newElements;
+            size = newSize;
         }
-        if (trueKey == false) {
-            size++;
-            newElements[size].setKey((K) key);
-            newElements[size].setValue((V) value);
+
+        return oldValue;
+
+//        // Raluca
+//        Node[] newElements = new Node[size];
+//        V oldValue = null;
+//        boolean containsKey = false;
+//        for (int i = 0; i < elements.length; i++) {
+//            if (elements[i] != null && key.equals(elements[i].getKey())) {
+//                oldValue = elements[i].getValue();
+//                newElements[i].setValue(value);
+//                containsKey = true;
+//                continue;
+//            }
+//            newElements[i] = elements[i];
+//        }
+//        elements = newElements;
+//        if (containsKey) {
+//            return oldValue;
+//        } else {
+//            //setSize(elements.length);
+//
+//            newElements[size].setKey(key);
+//            newElements[size].setValue(value);
+//        }
+//        elements = newElements;
+//        return null;
+    }
+
+    private Node<K, V>[] copyOfElements(int size) {
+        if (size < this.size) {
+            throw new RuntimeException("Size cannot be lower than initial size");
         }
-        elements = newElements;
-        return null;
+        return Arrays.copyOf(elements, size);
     }
 
     @Override
     public V remove(Object key) {
         Node[] newElements = new Node[size];
         for (int i = 0; i < size; i++) {
-            if (key.equals(elements[i].getKey())) {
+            if (elements[i] != null && key.equals(elements[i].getKey())) {
                 newElements[i] = elements[i + 1];
+                continue;
             } else newElements[i] = elements[i];
 
         }
@@ -141,11 +189,25 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public Collection values() {
+        return values();
+    }
+
+    @Override
+    public Set<Entry<K, V>> entrySet() {
+       /* Map<K, V> map = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            if (elements[i] != null) {
+                map.put(elements[i].getKey(), elements[i].getValue());
+            }
+        }*/
         return null;
     }
 
     @Override
-    public Set<Entry> entrySet() {
-        return null;
+    public String toString() {
+        return "CustomMap{" +
+                "size=" + size +
+                ", elements=" + Arrays.toString(elements) +
+                '}';
     }
 }
