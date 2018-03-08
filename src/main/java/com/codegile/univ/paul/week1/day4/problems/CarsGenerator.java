@@ -11,6 +11,7 @@ public class CarsGenerator {
             car.setNumberOfWheels(4);
             CarMake carMake = CarMake.getRandom();
             CarModel carModel = CarModel.getRandom();
+            car.setCarMake(carMake);
             cars.add(car);
         }
         return cars;

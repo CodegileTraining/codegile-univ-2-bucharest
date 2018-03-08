@@ -5,7 +5,7 @@ import java.util.List;
 public class Driver {
 
     private String name;
-    private List<DrivableVehicles> drivableVehicles;
+    private List<DrivableVehicle> drivableVehicles;
 
     public String getName() {
         return name;
@@ -15,15 +15,20 @@ public class Driver {
         this.name = name;
     }
 
-    public List<DrivableVehicles> getDrivableVehicles() {
+    public List<DrivableVehicle> getDrivableVehicles() {
         return drivableVehicles;
     }
 
-    public void setDrivableVehicles(List<DrivableVehicles> drivableVehicles) {
+    public void setDrivableVehicles(List<DrivableVehicle> drivableVehicles) {
         this.drivableVehicles = drivableVehicles;
     }
 
- //   public void drive(Vehicle vehicle){
- //       if (drivableVehicles.contains())
- //   }
+    public void drive(Vehicle vehicle){
+        String type = vehicle.getClass().getSimpleName();
+        if (drivableVehicles.contains(DrivableVehicle.valueOfClassName(type))) {
+            System.out.println("Driver is driving" + vehicle.toString());
+        } else {
+            System.out.println("cant drive blabla");
+        }
+    }
 }
