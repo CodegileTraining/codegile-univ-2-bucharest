@@ -194,12 +194,12 @@ public class CustomMap<K, V> implements Map<K, V> {
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-       /* Map<K, V> map = new HashMap<>();
-        for (int i = 0; i < size; i++) {
-            if (elements[i] != null) {
-                map.put(elements[i].getKey(), elements[i].getValue());
-            }
-        }*/
+//        Map<K, V> map = new HashMap<>();
+//        for (int i = 0; i < size; i++) {
+//            if (elements[i] != null) {
+//                map.put(elements[i].getKey(), elements[i].getValue());
+//            }
+//        }
         return null;
     }
 
