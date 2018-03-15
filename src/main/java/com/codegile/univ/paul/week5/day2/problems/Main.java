@@ -1,13 +1,16 @@
 package com.codegile.univ.paul.week5.day2.problems;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Main {
 
     public static void main(String[] args) {
-//        runExample1();
-//        runExample2();
-//        runExample3();
+//     runExample1();
+//     runExample2();
+//       runExample3();
 //        runExample4();
 //        runExample41();
     }
@@ -80,10 +83,10 @@ public class Main {
 
     private static void runExample2() {
         ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
-        ExecutorService fixedExecutor = Executors.newFixedThreadPool(3);
+        ExecutorService fixedExecutor = Executors.newFixedThreadPool(5);
         ExecutorService cachedExecutor = Executors.newCachedThreadPool();
 
-        testExecutor(fixedExecutor);
+        testExecutor(singleExecutor);
     }
 
     private static void testExecutor(ExecutorService executor) {
