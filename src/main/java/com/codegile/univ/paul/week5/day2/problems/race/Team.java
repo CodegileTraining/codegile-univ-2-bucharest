@@ -18,7 +18,7 @@ public class Team {
     public void prepare() {
         runners = new ArrayList<>(RUNNERS_PER_TEAM);
         for (int i = 0; i < RUNNERS_PER_TEAM; i++) {
-            runners.add(new Runner(teamName, i + 1));
+            runners.add(new Runner(this, i + 1));
         }
         runners.get(0).start();
         for (int i = 1; i < runners.size(); i++) {

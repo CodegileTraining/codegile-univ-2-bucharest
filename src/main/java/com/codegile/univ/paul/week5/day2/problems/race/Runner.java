@@ -6,23 +6,27 @@ public class Runner extends Thread {
 
     private static final Random random = new Random(System.currentTimeMillis());
 
+    private Team team;
     private String name;
     private Runner previousRunner;
 
-    public Runner(String teamName, int runnerPosition) {
-        name = "Runner " + runnerPosition + " from " + teamName;
+    public Runner(Team team, int runnerPosition) {
+        this.team = team;
+        name = "Runner " + runnerPosition + " from " + team.getTeamName();
     }
 
     @Override
     public void run() {
         try {
             System.out.println(name + " is prepared to run");
+            Gate.getInstance().countDown();
             Gate.getInstance().await();
             if (previousRunner != null) {
                 previousRunner.join();
-                System.out.println("hahaha");
+                //System.out.println("hahaha");
             }
             runTheRace();
+            team.runnerFinished();
         } catch(InterruptedException e) {
             e.printStackTrace();
         }

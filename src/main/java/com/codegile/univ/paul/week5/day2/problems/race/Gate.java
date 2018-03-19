@@ -9,7 +9,7 @@ public class Gate {
     private CountDownLatch countDownLatch;
 
     private Gate() {
-        countDownLatch = new CountDownLatch(1);
+        countDownLatch = new CountDownLatch(15);
     }
 
     public static Gate getInstance() {
@@ -26,7 +26,7 @@ public class Gate {
     public void await() {
         try {
             countDownLatch.await();
-            System.out.println("hahaha");
+            //System.out.println("hahaha");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
